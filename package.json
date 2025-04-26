@@ -1,6 +1,6 @@
 {
   "name": "@cluesurf/form-code",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -23,7 +23,6 @@
     "prettier": "^3.5.3"
   },
   "devDependencies": {
-    "@types/eslint": "^9.6.1",
     "@types/node": "^22.15.2",
     "@types/prettier": "^3.0.0",
     "concurrently": "^9.1.2",
