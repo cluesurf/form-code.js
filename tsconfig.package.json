@@ -4,7 +4,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "declaration": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "noImplicitAny": false,

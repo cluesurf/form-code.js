@@ -6,7 +6,6 @@
     "outDir": "host",
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": true,
     "moduleResolution": "node",
     "strictNullChecks": true,
     "strict": true,
@@ -26,7 +25,7 @@
   "include": [
     "*.ts",
     "**/*.ts",
-    "lint.js",
+    "lint.ts",
     "*.json",
     "eslint.config.js",
     "love.js"
