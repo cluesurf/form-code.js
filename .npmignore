@@ -1,0 +1,4 @@
+.vscode
+.prettierignore
+eslint.config.js
+tmp

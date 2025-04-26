@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES6",
+    "lib": ["es2020", "dom"],
+    "outDir": "host",
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
+    "allowJs": false,
+    "noErrorTruncation": true,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"],
+    "noImplicitAny": false,
+    "paths": {
+      "~/*": ["./*"]
+    }
+  },
+  "include": [
+    "*.ts",
+    "**/*.ts",
+    "lint.js",
+    "*.json",
+    "eslint.config.js",
+    "love.js"
+  ],
+  "exclude": ["node_modules", "host"]
+}
