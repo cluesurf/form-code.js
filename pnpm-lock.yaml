@@ -39,9 +39,6 @@ importers:
         specifier: ^3.5.3
         version: 3.5.3
     devDependencies:
-      '@types/eslint':
-        specifier: ^9.6.1
-        version: 9.6.1
       '@types/node':
         specifier: ^22.15.2
         version: 22.15.2
@@ -1381,6 +1378,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.7
       '@types/json-schema': 7.0.15
+    optional: true
 
   '@types/estree@1.0.7': {}
 
