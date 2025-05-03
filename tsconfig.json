@@ -1,23 +1,20 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ES6",
     "lib": ["es2020", "dom"],
-    "outDir": "host",
-    "rootDir": ".",
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "strictNullChecks": true,
+    "allowJs": true,
+    "skipLibCheck": true,
     "strict": true,
+    "sourceMap": true,
     "esModuleInterop": true,
-    "noUncheckedIndexedAccess": true,
-    "baseUrl": ".",
-    "allowJs": false,
-    "noErrorTruncation": true,
-    "resolveJsonModule": true,
-    "types": ["node"],
-    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
+    "module": "CommonJS",
+    "target": "ES2015",
+    "moduleResolution": "node",
+    "outDir": "host",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
     "paths": {
       "~/*": ["./*"]
     }
@@ -28,7 +25,8 @@
     "lint.ts",
     "*.json",
     "eslint.config.js",
-    "love.js"
+    "love.js",
+    "load.js"
   ],
   "exclude": ["node_modules", "host"]
 }

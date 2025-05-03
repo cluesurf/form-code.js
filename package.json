@@ -1,13 +1,12 @@
 {
   "name": "@cluesurf/form-code",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "scan": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
     "test": "npx ts-node-esm test.ts",
-    "make": "rm -rf host && tsc --project tsconfig.package.json && tsc-alias --project tsconfig.package.json && cp package.json host",
-    "host": "pnpm make && cd host && npm publish --access=public"
+    "make": "rm -rf host && tsc && tsc-alias",
+    "host": "pnpm make && npm publish --access=public"
   },
   "prettier": "./love.json",
   "dependencies": {
@@ -23,6 +22,7 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "prettier": "^3.5.3"
   },
+  "bin": "./load.js",
   "devDependencies": {
     "@types/node": "^22.15.2",
     "@types/prettier": "^3.0.0",

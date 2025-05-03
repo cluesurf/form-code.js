@@ -2,3 +2,4 @@
 .prettierignore
 eslint.config.js
 tmp
+!host/

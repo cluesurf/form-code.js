@@ -23,6 +23,32 @@ yarn add @cluesurf/form-code
 npm i @cluesurf/form-code
 ```
 
+## Usage
+
+Add default vscode settings/extensions:
+
+```bash
+npx @cluesurf/form-code
+```
+
+Use ClueSurf styled eslint config:
+
+```ts
+// eslint.config.ts
+import config from '@cluesurf/form-code/lint'
+import { defineConfig } from 'eslint/config'
+
+export default defineConfig([...config])
+```
+
+Use ClueSurf styled prettier config, add this to `package.json`:
+
+```json
+{
+  "prettier": "@cluesurf/form-code/love.json"
+}
+```
+
 ## License
 
 MIT
