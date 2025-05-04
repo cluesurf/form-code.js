@@ -1,6 +1,6 @@
 {
   "name": "@cluesurf/form-code",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "license": "MIT",
   "scripts": {
     "scan": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
@@ -10,6 +10,7 @@
   },
   "prettier": "./love.json",
   "dependencies": {
+    "@stylistic/eslint-plugin": "^4.2.0",
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",
     "braces": "^3.0.3",
