@@ -1,6 +1,6 @@
 {
   "name": "@cluesurf/form-code",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "license": "MIT",
   "scripts": {
     "scan": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
@@ -20,7 +20,8 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-sort-exports": "^0.9.1",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "yaml-eslint-parser": "^1.3.0"
   },
   "bin": "./load.js",
   "devDependencies": {
