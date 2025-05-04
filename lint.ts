@@ -2,19 +2,17 @@ import type { Linter } from 'eslint'
 
 const config: Linter.Config[] = [
   {
-    files: ['**/*.{js,ts,tsx}'], // you can adjust to your needs
+    files: ['**/*.{js,ts,tsx}'],
     languageOptions: {
       parser: require('@typescript-eslint/parser'),
       ecmaVersion: 2021,
       sourceType: 'module',
     },
     plugins: {
-      '@stylistic/eslint-plugin': require('@stylistic/eslint-plugin'),
+      '@stylistic': require('@stylistic/eslint-plugin'), // Changed
       import: require('eslint-plugin-import'),
       'simple-import-sort': require('eslint-plugin-simple-import-sort'),
       'sort-exports': require('eslint-plugin-sort-exports'),
-      // 'typescript-sort-keys': require('eslint-plugin-typescript-sort-keys'),
-      // 'sort-keys': require('eslint-plugin-sort-keys-fix'),
       prettier: require('eslint-plugin-prettier'),
       'unused-imports': require('eslint-plugin-unused-imports'),
     },
@@ -28,39 +26,37 @@ const config: Linter.Config[] = [
           allowTemplateLiterals: true,
         },
       ],
-      '@stylistic/eslint-plugin/no-unnecessary-condition': 0,
-      '@stylistic/eslint-plugin/array-type': [
-        2,
-        { default: 'generic' },
-      ],
+      '@stylistic/no-unnecessary-condition': 0, // Changed
+      '@stylistic/array-type': [2, { default: 'generic' }],
       'react/display-name': 'off',
-      '@stylistic/eslint-plugin/await-thenable': 'error',
-      '@stylistic/eslint-plugin/consistent-type-definitions': 0,
-      '@stylistic/eslint-plugin/consistent-type-exports': 'error',
-      '@stylistic/eslint-plugin/method-signature-style': 'error',
-      '@stylistic/eslint-plugin/naming-convention': 0,
-      '@stylistic/eslint-plugin/no-explicit-any': 'off',
-      '@stylistic/eslint-plugin/no-for-in-array': 'error',
-      '@stylistic/eslint-plugin/no-namespace': 0,
-      '@stylistic/eslint-plugin/no-non-null-assertion': 'off',
-      '@stylistic/eslint-plugin/no-require-imports': 'error',
-      '@stylistic/eslint-plugin/no-this-alias': 'error',
-      '@stylistic/eslint-plugin/no-unsafe-argument': 'off',
-      '@stylistic/eslint-plugin/no-unsafe-assignment': 'off',
-      '@stylistic/eslint-plugin/no-unsafe-member-access': 'off',
-      '@stylistic/eslint-plugin/no-unsafe-return': 'off',
-      '@stylistic/eslint-plugin/no-useless-empty-export': 'error',
-      '@stylistic/eslint-plugin/prefer-function-type': 'error',
+      '@stylistic/await-thenable': 'error', // Changed
+      '@stylistic/consistent-type-definitions': 0, // Changed
+      '@stylistic/consistent-type-exports': 'error', // Changed
+      '@stylistic/method-signature-style': 'error', // Changed
+      '@stylistic/naming-convention': 0, // Changed
+      '@stylistic/no-explicit-any': 'off', // Changed
+      '@stylistic/no-for-in-array': 'error', // Changed
+      '@stylistic/no-namespace': 0, // Changed
+      '@stylistic/no-non-null-assertion': 'off', // Changed
+      '@stylistic/no-require-imports': 'error', // Changed
+      '@stylistic/no-this-alias': 'error', // Changed
+      '@stylistic/no-unsafe-argument': 'off', // Changed
+      '@stylistic/no-unsafe-assignment': 'off', // Changed
+      '@stylistic/no-unsafe-member-access': 'off', // Changed
+      '@stylistic/no-unsafe-return': 'off', // Changed
+      '@stylistic/no-useless-empty-export': 'error', // Changed
+      '@stylistic/prefer-function-type': 'error', // Changed
       'no-array-constructor': 'off',
-      '@stylistic/eslint-plugin/no-array-constructor': 'error',
+      '@stylistic/no-array-constructor': 'error', // Changed
       'no-throw-literal': 'off',
-      '@stylistic/eslint-plugin/no-throw-literal': 'error',
+      '@stylistic/no-throw-literal': 'error', // Changed
       'lines-between-class-members': 'off',
-      '@stylistic/eslint-plugin/lines-between-class-members': 'error',
+      '@stylistic/lines-between-class-members': 'error', // Changed
       'object-curly-spacing': 'off',
-      '@stylistic/eslint-plugin/object-curly-spacing': [2, 'always'],
+      '@stylistic/object-curly-spacing': [2, 'always'], // Changed
       'padding-line-between-statements': 'off',
-      '@stylistic/eslint-plugin/padding-line-between-statements': [
+      '@stylistic/padding-line-between-statements': [
+        // Changed
         'error',
         {
           blankLine: 'always',
@@ -69,11 +65,13 @@ const config: Linter.Config[] = [
         },
       ],
       'space-before-blocks': 'off',
-      '@stylistic/eslint-plugin/space-before-blocks': [
+      '@stylistic/space-before-blocks': [
+        // Changed
         'error',
         'always',
       ],
-      '@stylistic/eslint-plugin/type-annotation-spacing': [
+      '@stylistic/type-annotation-spacing': [
+        // Changed
         'error',
         { after: true },
       ],
@@ -84,7 +82,7 @@ const config: Linter.Config[] = [
       'sort-keys': 'off',
       'sort-keys/sort-keys-fix': 'off',
       'prettier/prettier': 2,
-      '@stylistic/eslint-plugin/no-unused-vars': 'off',
+      '@stylistic/no-unused-vars': 'off', // Changed
       'default-case': 'off',
       'default-case-last': 'off',
       'unused-imports/no-unused-imports': 'error',
