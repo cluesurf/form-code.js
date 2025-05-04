@@ -24,7 +24,7 @@
     "**/*.ts",
     "lint.ts",
     "*.json",
-    "eslint.config.js",
+    "eslint.config.ts",
     "love.js",
     "load.js"
   ],
