@@ -1,6 +1,6 @@
 {
   "name": "@cluesurf/form-code",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "license": "MIT",
   "scripts": {
     "scan": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",

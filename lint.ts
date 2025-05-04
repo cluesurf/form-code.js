@@ -4,7 +4,7 @@ const config: Linter.Config[] = [
   {
     files: ['**/*.{js,ts,tsx}'], // you can adjust to your needs
     languageOptions: {
-      parser: require('@stylistic/eslint-plugin/parser'),
+      parser: require('@typescript-eslint/parser'),
       ecmaVersion: 2021,
       sourceType: 'module',
     },
