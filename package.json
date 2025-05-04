@@ -1,7 +1,8 @@
 {
   "name": "@cluesurf/form-code",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "scan": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
     "test": "npx ts-node-esm test.ts",
@@ -11,6 +12,8 @@
   "prettier": "./love.json",
   "dependencies": {
     "@stylistic/eslint-plugin": "^4.2.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "@stylistic/eslint-plugin-ts": "^4.2.0",
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",
     "braces": "^3.0.3",

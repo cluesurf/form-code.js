@@ -1,22 +1,32 @@
 import type { Linter } from 'eslint'
+import stylisticJs from '@stylistic/eslint-plugin-js'
+import stylisticTs from '@stylistic/eslint-plugin-ts'
+import importPlugin from 'eslint-plugin-import'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import sortExports from 'eslint-plugin-sort-exports'
+import prettier from 'eslint-plugin-prettier'
+import unusedImports from 'eslint-plugin-unused-imports'
+import tsParser from '@typescript-eslint/parser'
 
 const config: Linter.Config[] = [
   {
     files: ['**/*.{js,ts,tsx}'],
     languageOptions: {
-      parser: require('@typescript-eslint/parser'),
+      parser: tsParser,
       ecmaVersion: 2021,
       sourceType: 'module',
     },
     plugins: {
-      '@stylistic': require('@stylistic/eslint-plugin'), // Changed
-      import: require('eslint-plugin-import'),
-      'simple-import-sort': require('eslint-plugin-simple-import-sort'),
-      'sort-exports': require('eslint-plugin-sort-exports'),
-      prettier: require('eslint-plugin-prettier'),
-      'unused-imports': require('eslint-plugin-unused-imports'),
+      '@stylistic/js': stylisticJs,
+      '@stylistic/ts': stylisticTs,
+      import: importPlugin,
+      'simple-import-sort': simpleImportSort,
+      'sort-exports': sortExports,
+      prettier: prettier,
+      'unused-imports': unusedImports,
     },
     rules: {
+      // Basic rules
       curly: 2,
       quotes: [
         'error',
@@ -26,37 +36,11 @@ const config: Linter.Config[] = [
           allowTemplateLiterals: true,
         },
       ],
-      '@stylistic/no-unnecessary-condition': 0, // Changed
-      '@stylistic/array-type': [2, { default: 'generic' }],
-      'react/display-name': 'off',
-      '@stylistic/await-thenable': 'error', // Changed
-      '@stylistic/consistent-type-definitions': 0, // Changed
-      '@stylistic/consistent-type-exports': 'error', // Changed
-      '@stylistic/method-signature-style': 'error', // Changed
-      '@stylistic/naming-convention': 0, // Changed
-      '@stylistic/no-explicit-any': 'off', // Changed
-      '@stylistic/no-for-in-array': 'error', // Changed
-      '@stylistic/no-namespace': 0, // Changed
-      '@stylistic/no-non-null-assertion': 'off', // Changed
-      '@stylistic/no-require-imports': 'error', // Changed
-      '@stylistic/no-this-alias': 'error', // Changed
-      '@stylistic/no-unsafe-argument': 'off', // Changed
-      '@stylistic/no-unsafe-assignment': 'off', // Changed
-      '@stylistic/no-unsafe-member-access': 'off', // Changed
-      '@stylistic/no-unsafe-return': 'off', // Changed
-      '@stylistic/no-useless-empty-export': 'error', // Changed
-      '@stylistic/prefer-function-type': 'error', // Changed
-      'no-array-constructor': 'off',
-      '@stylistic/no-array-constructor': 'error', // Changed
-      'no-throw-literal': 'off',
-      '@stylistic/no-throw-literal': 'error', // Changed
-      'lines-between-class-members': 'off',
-      '@stylistic/lines-between-class-members': 'error', // Changed
-      'object-curly-spacing': 'off',
-      '@stylistic/object-curly-spacing': [2, 'always'], // Changed
-      'padding-line-between-statements': 'off',
-      '@stylistic/padding-line-between-statements': [
-        // Changed
+
+      // JavaScript stylistic rules (use @stylistic/js prefix)
+      '@stylistic/js/object-curly-spacing': [2, 'always'],
+      '@stylistic/js/lines-between-class-members': 'error',
+      '@stylistic/js/padding-line-between-statements': [
         'error',
         {
           blankLine: 'always',
@@ -64,17 +48,33 @@ const config: Linter.Config[] = [
           next: ['type'],
         },
       ],
-      'space-before-blocks': 'off',
-      '@stylistic/space-before-blocks': [
-        // Changed
-        'error',
-        'always',
-      ],
-      '@stylistic/type-annotation-spacing': [
-        // Changed
+      '@stylistic/js/space-before-blocks': ['error', 'always'],
+
+      // TypeScript stylistic rules (use @stylistic/ts prefix)
+      '@stylistic/ts/type-annotation-spacing': [
         'error',
         { after: true },
       ],
+      '@stylistic/ts/array-type': [2, { default: 'generic' }],
+      '@stylistic/ts/await-thenable': 'error',
+      '@stylistic/ts/consistent-type-definitions': 0,
+      '@stylistic/ts/consistent-type-exports': 'error',
+      '@stylistic/ts/method-signature-style': 'error',
+      '@stylistic/ts/naming-convention': 0,
+      '@stylistic/ts/no-explicit-any': 'off',
+      '@stylistic/ts/no-for-in-array': 'error',
+      '@stylistic/ts/no-namespace': 0,
+      '@stylistic/ts/no-non-null-assertion': 'off',
+      '@stylistic/ts/no-require-imports': 'error',
+      '@stylistic/ts/no-this-alias': 'error',
+      '@stylistic/ts/no-unsafe-argument': 'off',
+      '@stylistic/ts/no-unsafe-assignment': 'off',
+      '@stylistic/ts/no-unsafe-member-access': 'off',
+      '@stylistic/ts/no-unsafe-return': 'off',
+      '@stylistic/ts/no-useless-empty-export': 'error',
+      '@stylistic/ts/prefer-function-type': 'error',
+
+      // Other rules
       'import/no-duplicates': 'error',
       'sort-exports/sort-exports': 'off',
       'typescript-sort-keys/interface': 'off',
@@ -82,7 +82,6 @@ const config: Linter.Config[] = [
       'sort-keys': 'off',
       'sort-keys/sort-keys-fix': 'off',
       'prettier/prettier': 2,
-      '@stylistic/no-unused-vars': 'off', // Changed
       'default-case': 'off',
       'default-case-last': 'off',
       'unused-imports/no-unused-imports': 'error',
