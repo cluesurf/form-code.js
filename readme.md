@@ -45,7 +45,7 @@ Use ClueSurf styled prettier config, add this to `package.json`:
 
 ```json
 {
-  "prettier": "@cluesurf/wash/love.json"
+  "prettier": "@cluesurf/wash/flow.json"
 }
 ```
 
