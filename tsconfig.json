@@ -19,14 +19,6 @@
       "~/*": ["./*"]
     }
   },
-  "include": [
-    "*.ts",
-    "**/*.ts",
-    "lint.ts",
-    "*.json",
-    "eslint.config.ts",
-    "love.js",
-    "load.js"
-  ],
+  "include": ["*.ts", "lint.ts", "eslint.config.ts", "code/*.ts"],
   "exclude": ["node_modules", "host"]
 }

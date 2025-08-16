@@ -1,6 +1,6 @@
 {
-  "name": "@cluesurf/form-code",
-  "version": "0.5.0",
+  "name": "@cluesurf/wash",
+  "version": "0.6.0",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "make": "rm -rf host && tsc && tsc-alias",
     "host": "pnpm make && npm publish --access=public"
   },
-  "prettier": "./love.json",
+  "prettier": "./flow.json",
   "dependencies": {
     "@eslint/js": "^9.26.0",
     "eslint": "^9.25.1",

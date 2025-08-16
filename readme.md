@@ -6,9 +6,9 @@
 <br/>
 <br/>
 
-<h3 align='center'>@cluesurf/form-code</h3>
+<h3 align='center'>@cluesurf/wash</h3>
 <p align='center'>
-  Lint and Format Code Style for ClueSurf Projets
+  Lint and Format Code for ClueSurf Projects
 </p>
 
 <br/>
@@ -18,9 +18,9 @@
 ## Installation
 
 ```
-pnpm add @cluesurf/form-code
-yarn add @cluesurf/form-code
-npm i @cluesurf/form-code
+pnpm add @cluesurf/wash
+yarn add @cluesurf/wash
+npm i @cluesurf/wash
 ```
 
 ## Usage
@@ -28,14 +28,14 @@ npm i @cluesurf/form-code
 Add default vscode settings/extensions:
 
 ```bash
-npx @cluesurf/form-code
+npx @cluesurf/wash
 ```
 
 Use ClueSurf styled eslint config:
 
 ```ts
 // eslint.config.ts
-import config from '@cluesurf/form-code/lint'
+import config from '@cluesurf/wash/lint'
 import { defineConfig } from 'eslint/config'
 
 export default defineConfig([...config])
@@ -45,7 +45,7 @@ Use ClueSurf styled prettier config, add this to `package.json`:
 
 ```json
 {
-  "prettier": "@cluesurf/form-code/love.json"
+  "prettier": "@cluesurf/wash/love.json"
 }
 ```
 

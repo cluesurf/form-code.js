@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(cat:*)",
+      "Bash(rm:*)",
+      "Bash(pnpm:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node:*)",
+      "Bash(cd:*)",
+      "Bash(pnpm:*)",
+      "Bash(sp)",
+      "Bash(tsx:*)",
+      "Bash(touch:*)"
+    ],
+    "deny": [],
+    "defaultMode": "acceptEdits"
+  }
+}

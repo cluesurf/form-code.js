@@ -11,16 +11,14 @@
   "proseWrap": "always",
   "endOfLine": "lf",
   "singleAttributePerLine": true,
-  "prettierPath": "./node_modules/prettier",
-  "importOrder": [
-    "^react$",
-    "^styled",
-    "^\\w(.*)$",
-    "^@(.*)$",
-    "~(.*)$",
-    "\\..(.*)$",
-    "\\.(.*)$"
-  ],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "importOrderSortSpecifiers": true,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
 }

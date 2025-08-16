@@ -6,10 +6,7 @@
     "source.fixAll.eslint": "explicit"
   },
   "css.lint.unknownAtRules": "ignore",
-  "eslint.validate": [
-    "javascript",
-    "typescript"
-  ],
+  "eslint.validate": ["javascript", "typescript"],
   "eslint.nodePath": "./node_modules/eslint",
   "emmet.showExpandedAbbreviation": "never",
   "editor.quickSuggestions": {
@@ -44,6 +41,5 @@
     "!Sub scalar",
     "!GetAtt scalar",
     "!GetParam scalar"
-  ],
-  "eslint.packageManager": "npm"
+  ]
 }
