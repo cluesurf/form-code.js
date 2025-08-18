@@ -35,10 +35,9 @@ Use ClueSurf styled eslint config:
 
 ```ts
 // eslint.config.ts
-import config from '@cluesurf/wash/lint'
-import { defineConfig } from 'eslint/config'
+import LINT from '@cluesurf/wash/lint'
 
-export default defineConfig([...config])
+export default LINT
 ```
 
 Use ClueSurf styled prettier config, add this to `package.json`:
