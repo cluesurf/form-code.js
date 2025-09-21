@@ -1,5 +1,13 @@
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+// Fallback for environments that don't support import.meta.dirname
+const __dirname =
+  typeof import.meta.dirname !== 'undefined'
+    ? import.meta.dirname
+    : dirname(fileURLToPath(import.meta.url))
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -9,7 +17,7 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: import.meta.dirname,
+        tsconfigRootDir: __dirname,
       },
     },
   },
