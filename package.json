@@ -1,12 +1,12 @@
 {
   "name": "@cluesurf/wash",
-  "version": "0.6.8",
+  "version": "0.6.10",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "scan": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
     "test": "npx ts-node-esm test.ts",
-    "make": "rm -rf host && tsc && tsc-alias",
+    "make": "rm -rf host && tsc && tsc-alias && cp flow.json host",
     "host": "pnpm make && npm publish --access=public"
   },
   "prettier": "./flow.json",
