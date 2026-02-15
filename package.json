@@ -1,6 +1,6 @@
 {
   "name": "@cluesurf/wash",
-  "version": "0.6.10",
+  "version": "0.7.0",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -11,23 +11,23 @@
   },
   "prettier": "./flow.json",
   "dependencies": {
-    "@eslint/js": "^9.33.0",
-    "eslint": "^9.33.0",
-    "prettier": "^3.6.2",
-    "typescript-eslint": "^8.39.1"
+    "@eslint/js": "10.0.1",
+    "prettier": "3.8.1",
+    "typescript-eslint": "8.55.0"
   },
   "bin": "./load.js",
   "devDependencies": {
-    "@types/node": "^22.15.2",
+    "@types/node": "25.2.3",
     "@types/prettier": "^3.0.0",
-    "concurrently": "^9.1.2",
+    "concurrently": "9.2.1",
     "ts-node": "^10.9.2",
-    "tsc-alias": "^1.8.15",
-    "typescript": "^5.8.3"
+    "tsc-alias": "1.8.16",
+    "typescript": "5.9.3"
   },
   "pnpm": {
     "overrides": {
-      "minimatch": "10.0.3"
+      "minimatch": "10.0.3",
+      "@isaacs/brace-expansion": ">=5.0.1"
     }
   }
 }
