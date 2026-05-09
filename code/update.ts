@@ -1,8 +1,8 @@
 import fs from 'fs/promises'
 import path from 'path'
 import deepMerge from './merge.js'
-import SHARED_SETTINGS from './data/settings.json'
-import SHARED_EXTENSIONS from './data/extensions.json'
+import SHARED_SETTINGS from './data/settings.json' with { type: 'json' }
+import SHARED_EXTENSIONS from './data/extensions.json' with { type: 'json' }
 
 export async function updateSettings() {
   await update({ type: 'settings', shared: SHARED_SETTINGS })
@@ -26,7 +26,9 @@ export async function update({
   try {
     const file = await fs.readFile(localPath, 'utf-8')
     local = JSON.parse(file)
-  } catch (err) {}
+  } catch (_err) {
+    // No existing file (or unreadable) — start fresh.
+  }
 
   const merged = deepMerge(shared, local)
 

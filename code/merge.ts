@@ -1,3 +1,17 @@
+// Deep-merge for VS Code settings/extensions JSON.
+//
+// Behavior:
+//   - Two primitive arrays merge into a deduplicated union
+//     (so user `recommendations` arrays add up).
+//   - Two non-primitive (object/mixed) arrays favor `b`
+//     (the local override wins outright).
+//   - Two plain objects merge recursively.
+//   - Anything else: `b` wins.
+//
+// `any` is used liberally here because the inputs are
+// arbitrary JSON. Boundary code; real types would be
+// noise.
+
 const PRIMITIVE_TYPES = [
   'string',
   'number',
