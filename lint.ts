@@ -1,5 +1,13 @@
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
+import stylistic from '@stylistic/eslint-plugin'
+import type { ESLint } from 'eslint'
+
+// The @stylistic default export is a valid ESLint flat-config plugin, but
+// its published type does not structurally line up with the plugin type
+// typescript-eslint's `config()` helper expects, so register it through the
+// canonical `ESLint.Plugin` type.
+const stylisticPlugin = stylistic as unknown as ESLint.Plugin
 
 // The declaration / definition statement kinds that get a blank line on
 // BOTH sides in `padding-line-between-statements`. A run of the SAME kind
@@ -37,6 +45,13 @@ export default tseslint.config(
     },
   },
   {
+    plugins: {
+      // The stylistic extension rules (padding-line-between-statements and
+      // friends) were removed from typescript-eslint in v8. The @stylistic
+      // plugin carries them, and its unified rule keeps the TS-aware
+      // selectors (type / interface / enum) this config relies on.
+      '@stylistic': stylisticPlugin,
+    },
     rules: {
       // `any` is tolerated. Real types are preferred when
       // practical; `any` is fine at boundaries where the
@@ -109,14 +124,14 @@ export default tseslint.config(
       // SAME kind of declaration groups tightly, but any CHANGE of kind
       // (and every block / control-flow seam) is set off by exactly one
       // blank line. The list of declaration kinds is defined once above
-      // as DECLARATION_KINDS. Uses the typescript-eslint variant so
+      // as DECLARATION_KINDS. Uses the @stylistic variant so
       // `type` / `interface` / `enum` are first-class selectors, not just
       // an untyped `*`. `padding-line-between-statements` (matching the
       // LAST applicable rule for a pair) means the same-kind "any"
       // exceptions must come AFTER the broad "always" rules. All of this
       // is auto-fixable.
       'padding-line-between-statements': 'off',
-      '@typescript-eslint/padding-line-between-statements': [
+      '@stylistic/padding-line-between-statements': [
         'error',
         // the import block is separated from the body; imports stay tight
         { blankLine: 'always', prev: 'import', next: '*' },

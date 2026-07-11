@@ -1,0 +1,12 @@
+# wash.js is a standalone published package (its own git repo), not a
+# member of the cluesurf root workspace. Without this file, pnpm v11 walks
+# up to the cluesurf root `pnpm-workspace.yaml` and installs there, updating
+# the root lockfile instead of wash.js's own. Declaring a workspace file
+# here makes wash.js its own root, so `pnpm install` updates
+# `deck/wash.js/pnpm-lock.yaml`.
+#
+# `overrides` lives here (not in package.json's `pnpm.overrides`) because
+# pnpm v11 reads root overrides from the workspace file.
+overrides:
+  minimatch: 10.0.3
+  '@isaacs/brace-expansion': '>=5.0.1'
