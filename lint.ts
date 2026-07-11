@@ -1,6 +1,21 @@
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
 
+// The declaration / definition statement kinds that get a blank line on
+// BOTH sides in `padding-line-between-statements`. A run of the SAME kind
+// stays grouped (the `any` exceptions in the rule below). Hoisted to
+// module scope so the two rule entries that use it cannot drift apart.
+const DECLARATION_KINDS = [
+  'const',
+  'let',
+  'var',
+  'type',
+  'interface',
+  'enum',
+  'function',
+  'class',
+]
+
 // `tsconfigRootDir` must resolve to the CONSUMER's project
 // root, not this package's own folder inside node_modules.
 // `process.cwd()` points `projectService` at the directory
@@ -87,53 +102,42 @@ export default tseslint.config(
         { exceptAfterSingleLine: true },
       ],
 
-      // Breathing room at the natural seams of a block. Each entry
-      // requires a blank line at that boundary (auto-fixable).
-      'padding-line-between-statements': [
+      // Blank-line discipline between statements. The goal: a run of the
+      // SAME kind of declaration groups tightly, but any CHANGE of kind
+      // (and every block / control-flow seam) is set off by exactly one
+      // blank line. The list of declaration kinds is defined once above
+      // as DECLARATION_KINDS. Uses the typescript-eslint variant so
+      // `type` / `interface` / `enum` are first-class selectors, not just
+      // an untyped `*`. `padding-line-between-statements` (matching the
+      // LAST applicable rule for a pair) means the same-kind "any"
+      // exceptions must come AFTER the broad "always" rules. All of this
+      // is auto-fixable.
+      'padding-line-between-statements': 'off',
+      '@typescript-eslint/padding-line-between-statements': [
         'error',
-        // separate the import block from the body
+        // the import block is separated from the body; imports stay tight
         { blankLine: 'always', prev: 'import', next: '*' },
         { blankLine: 'any', prev: 'import', next: 'import' },
-        // keep same-kind declarations grouped, but put a blank line
-        // between a `const` group and a `let` group (and vice versa)
-        { blankLine: 'always', prev: 'const', next: 'let' },
-        { blankLine: 'always', prev: 'let', next: 'const' },
-        // a declaration that follows ordinary (expression) statements
-        // starts a new group, so give it a blank line before it
-        {
-          blankLine: 'always',
-          prev: 'expression',
-          next: ['const', 'let'],
-        },
-        // and the mirror: ordinary statements that follow a declaration
-        // group start a new group too, so a run of `const`s and the
-        // `delete`s (or calls) after them are separated by a blank line
-        {
-          blankLine: 'always',
-          prev: ['const', 'let'],
-          next: 'expression',
-        },
-        // a multi-line declaration (e.g. a function-bodied const)
-        // gets a blank line after it
-        {
-          blankLine: 'always',
-          prev: ['multiline-const', 'multiline-let'],
-          next: '*',
-        },
-        // breathing room BEFORE and AFTER a block-like statement
-        // (if / for / while / switch / try)
-        { blankLine: 'always', prev: 'block-like', next: '*' },
+        // every declaration / definition gets a blank line on BOTH sides,
+        // so a `type` and the `const` after it (or a `const` group and the
+        // `delete`s after it) are always separated
+        { blankLine: 'always', prev: '*', next: DECLARATION_KINDS },
+        { blankLine: 'always', prev: DECLARATION_KINDS, next: '*' },
+        // ...except a run of the SAME kind groups without blank lines
+        { blankLine: 'any', prev: 'const', next: 'const' },
+        { blankLine: 'any', prev: 'let', next: 'let' },
+        { blankLine: 'any', prev: 'var', next: 'var' },
+        { blankLine: 'any', prev: 'type', next: 'type' },
+        { blankLine: 'any', prev: 'interface', next: 'interface' },
+        // block-like statements (if / for / while / do / switch / try)
+        // get a blank line before and after
         { blankLine: 'always', prev: '*', next: 'block-like' },
-        // around function and class declarations
-        { blankLine: 'always', prev: '*', next: ['function', 'class'] },
-        { blankLine: 'always', prev: ['function', 'class'], next: '*' },
-        // before every `return`
-        { blankLine: 'always', prev: '*', next: 'return' },
-        // a blank line between consecutive multi-line expression
-        // statements. In a test file each `it('...', () => { ... })`
-        // (and each `describe`) is a multi-line expression, so this puts
-        // one blank line between test cases, while single-line siblings
-        // like consecutive `expect(...)` calls stay tight.
+        { blankLine: 'always', prev: 'block-like', next: '*' },
+        // a control-flow exit is set off by a blank line before it
+        { blankLine: 'always', prev: '*', next: ['return', 'throw'] },
+        // consecutive MULTI-LINE expression statements are separated (e.g.
+        // `it('...', () => { ... })` test blocks), while single-line
+        // siblings like consecutive `expect(...)` calls stay tight
         {
           blankLine: 'always',
           prev: 'multiline-expression',
