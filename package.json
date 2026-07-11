@@ -1,8 +1,14 @@
 {
   "name": "@cluesurf/wash",
-  "version": "0.9.0",
+  "version": "0.10.4",
   "license": "MIT",
   "type": "module",
+  "exports": {
+    "./lint": "./host/lint.js",
+    "./flow.json": "./flow.json",
+    "./load.js": "./load.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "scan": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
     "test": "npx ts-node-esm test.ts",
