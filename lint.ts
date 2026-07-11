@@ -87,12 +87,15 @@ export default tseslint.config(
       // `require` is allowed in CommonJS shims and bin files.
       '@typescript-eslint/no-require-imports': 'off',
 
-      // `curly: multi-or-nest` FORBIDS braces around a single-line,
-      // non-nested body (auto-removing them) but REQUIRES them when the
-      // body is multi-line or nested. So `if (m) {return foo(m[1])}`
-      // is stripped to `if (m) return foo(m[1])`, while a multi-line
-      // body keeps its braces.
-      curly: ['error', 'multi-or-nest'],
+      // `curly: all` requires braces on EVERY control statement
+      // (if / else / for / while / do) — a body is never a brace-less
+      // one-liner. eslint adds the braces; prettier (running AFTER
+      // eslint in the format pass) then nests the body on its own
+      // indented line, so `if (x) return y` becomes
+      //   if (x) {
+      //     return y
+      //   }
+      curly: ['error', 'all'],
 
       // Blank line between class members (methods / fields), except
       // after a single-line member, so tight one-liners can group.
